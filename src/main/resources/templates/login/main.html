@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>登录成功界面</title>
+</head>
+<body>
+<button id = "loginOut">登出</button>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script th:inline="javascript">
+    $('#loginOut').on('click',function(){
+        window.location.href = "/login";
+    });
+</script>
+</body>
+</html>

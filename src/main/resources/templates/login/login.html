@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+</head>
+<body>
+
+<h1 style="position: center ;">登录</h1>
+
+账号：<input type="text" id="username" name = "username"> <br>
+密码：<input type="password" id = "password" name = "password"> <br>
+<input type="submit" id = "login" value = "login">
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script th:inline="javascript">
+    $('#login').on('click',function(){
+        var data={};
+        data["username"] = $("input:text[name = 'username']").val();
+        data["password"] = $("input:password[name = 'password']").val()
+        $.ajax({
+            type : "post",
+            data : data ,
+            url : '/loginIn' ,
+            success : function(result){
+                if(result.resultCode == "1"){
+                    window.location.href = "/main";
+                }else if(result.resultCode == "2"){
+                    window.location.href = "/noRole";
+                }
+            },
+            error : function(){
+                window.location.href = "/error";
+
+            }
+        })
+    })
+</script>
+
+</body>
+</html>
